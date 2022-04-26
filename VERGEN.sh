@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
-VERGEN_BIRTH="2022-04-26 05:00:00.0000 UTC"
-VERGEN_BUILD="0.1.3571.153332"
-VERGEN_BUILT="2022-04-26 06:59:31.1533 UTC"
+VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
+VERGEN_BUILD="0.13.1384.751799"
+VERGEN_BUILT="2022-04-26 20:39:04.7517 UTC"
 
 readonly TRUE=$((1))
 readonly FALSE=$((0))
@@ -35,7 +35,7 @@ pcf () { # print to console and file
 ex () { # error and exit
     local code=$(($1)) && readonly code
     local msg="$2" && readonly msg
-    
+
     if [ $code = $((1)) ]; then $(pcf "$TMP" "error($code) = Invalid argument : \"$msg\"");
     fi
 
@@ -50,18 +50,18 @@ out () { # find and replace or add to beginning of file if not found
     local find="$1" && readonly find
     local replace="$2" && readonly replace
     local output="$3" && readonly output
-    
-    if [ "$(grep -Eio "$find" "$output" | head -1)" != "" ]; then 
+
+    if [ "$(grep -Eio "$find" "$output" | head -1)" != "" ]; then
         sed -i -E "s/$find/$replace/g" "$output"
-    elif [ "$(grep -Eio '^#!.*' "$output" | head -1)" != "" ]; then 
+    elif [ "$(grep -Eio '^#!.*' "$output" | head -1)" != "" ]; then
         code="$(grep -Eio '^#!.*' "$output" | head -1)"
         sed -i -E 's/^#!.*//g' "$output"
         echo "
 $replace$(cat "$output")" > "$output"
         echo "$code$(cat "$output")" > "$output"
     else
-        echo "
-$replace$(cat "$output")" > "$output"        
+        echo "$replace
+$(cat "$output")" > "$output"
     fi
 }
 
@@ -74,12 +74,12 @@ for arg in "$@"; do
     if [ "$arg" = "-b" ] || [ "$arg" = "--birth"  ]; then opt="birth";  argBirth="";  continue; fi
     if [ "$arg" = "-i" ] || [ "$arg" = "--input"  ]; then opt="input";  argInput="";  continue; fi
     if [ "$arg" = "-o" ] || [ "$arg" = "--output" ]; then opt="output"; argOutput=""; continue; fi
-    
+
     if [ "$opt" = "based"  ]; then argBased="$(echo "$argBased $arg" | xargs)";   continue; fi
     if [ "$opt" = "birth"  ]; then argBirth="$(echo "$argBirth $arg" | xargs)";   continue; fi
     if [ "$opt" = "input"  ]; then argInput="$(echo "$argInput $arg" | xargs)";   continue; fi
     if [ "$opt" = "output" ]; then argOutput="$(echo "$argOutput $arg" | xargs)"; continue; fi
-    
+
     if [ "$(echo "$(date -d "$arg" 2>&1)" | grep -Eio 'invalid' | head -1)" = "" ]; then argBirth="$arg"; continue; fi
     if [ "$(echo "$arg" | grep -Eio "$BASEALL" | head -1)" != "" ]; then argBased="$arg"; continue; fi
 
@@ -160,15 +160,17 @@ buildOut="VERGEN_BUILD=\"$build\""
 builtOut="VERGEN_BUILT=\"$(TZ=UTC date -u -d@$(echo "$now" | head -c -10).$(echo "$now" | tail -c -10) +"%Y-%m-%d %H:%M:%S.%4N %Z")\""
 
 if [ "$argOutput" != "" ]; then
-    if [ ! -f "$argOutput" ]; then 
-        true > "$argOutput"
-        echo "Output file created: \"$argOutput\""
-    fi
-    
-    $(out "VERGEN_BUILT=\".*\"" "$builtOut" "$argOutput")
-    $(out "VERGEN_BUILD=\".*\"" "$buildOut" "$argOutput")
-    $(out "VERGEN_BIRTH=\".*\"" "$birthOut" "$argOutput")
-    $(out "VERGEN_BASED=\".*\"" "$basedOut" "$argOutput")
+    for file in $argOutput; do 
+        if [ ! -f "$file" ]; then
+            true > "$file"
+            echo "Output file created: \"$file\""
+        fi
+
+        $(out "VERGEN_BUILT=\".*\"" "$builtOut" "$file")
+        $(out "VERGEN_BUILD=\".*\"" "$buildOut" "$file")
+        $(out "VERGEN_BIRTH=\".*\"" "$birthOut" "$file")
+        $(out "VERGEN_BASED=\".*\"" "$basedOut" "$file")
+    done
 fi
 
 $(pcf "$TMP" "$basedOut");
