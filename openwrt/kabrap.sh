@@ -1,8 +1,11 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="0.13.1637.754184"
-VERGEN_BUILT="2022-04-26 20:43:17.7541 UTC"
+VERGEN_BUILD="0.226.2778.541603"
+VERGEN_BUILT="2022-05-05 18:02:18.5416 UTC"
+
+# https://github.com/michaelmannelson/scripts
+# No warranty is expressed or implied. Run at your own risk.
 
 readonly TRUE=$((1))
 readonly FALSE=$((0))
@@ -139,7 +142,6 @@ for arg in "$@"; do
     exit $(e 2 $arg)
 done
 readonly argAddress; readonly argByte; readonly argHelp; readonly argMax; readonly argLog; readonly argOption; readonly argPeriod;
-
 #echo "argAddress=$argAddress"; echo "argByte=$argByte"; echo "argHelp=$argHelp"; echo "argMax=$argMax"; echo "argLog=$argLog"; echo "argOption=$argOption"; echo "argPeriod=$argPeriod";
 
 if [ $argHelp = $TRUE ] || [ $(($#)) = $((0)) ] ; then

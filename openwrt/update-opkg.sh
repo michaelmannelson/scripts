@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="0.13.1637.754184"
-VERGEN_BUILT="2022-04-26 20:43:17.7541 UTC"
+VERGEN_BUILD="0.226.2778.541603"
+VERGEN_BUILT="2022-05-05 18:02:18.5416 UTC"
 
 opkg update
 # upgrade netifd first as it causes drop out and system upgrade fails
