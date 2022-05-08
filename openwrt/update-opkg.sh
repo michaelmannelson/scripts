@@ -1,11 +1,11 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="0.283.445.426782"
-VERGEN_BUILT="2022-05-08 02:23:25.4267 UTC"
+VERGEN_BUILD="0.283.1331.418815"
+VERGEN_BUILT="2022-05-08 02:38:11.4188 UTC"
 
 ### Set up by hand with the following commands
-# mkdir -p /usr/local/sbin
+# mkdir -p /usr/local/sbin && cd /usr/local/sbin
 # wget https://raw.githubusercontent.com/michaelmannelson/scripts/main/openwrt/update-opkg.sh
 # chmod +x update-opkg.sh
 # crontab -e
