@@ -1,8 +1,16 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="0.280.2925.784414"
-VERGEN_BUILT="2022-05-08 00:04:45.7844 UTC"
+VERGEN_BUILD="0.283.445.426782"
+VERGEN_BUILT="2022-05-08 02:23:25.4267 UTC"
+
+### Set up by hand with the following commands
+# mkdir -p /usr/local/sbin
+# wget https://raw.githubusercontent.com/michaelmannelson/scripts/main/openwrt/update-opkg.sh
+# chmod +x update-opkg.sh
+# crontab -e
+# 0 2 * * * /usr/local/sbin/update-system.sh
+# ./update-opkg.sh
 
 opkg update
 # upgrade netifd first as it causes drop out and system upgrade fails
