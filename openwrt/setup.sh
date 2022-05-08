@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="0.280.2925.784414"
-VERGEN_BUILT="2022-05-08 00:04:45.7844 UTC"
+VERGEN_BUILD="0.283.1331.418815"
+VERGEN_BUILT="2022-05-08 02:38:11.4188 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
@@ -27,19 +27,6 @@ for arg in "$@"; do
 done
 
 readonly argHostname;
-
-if [ $argHelp = $TRUE ] || [ $(($#)) = $((0)) ] ; then
-    echo "Script:  mesh-setup"
-    echo "Usage:   ./$(basename "$0") -a FILE|RANGE|LIST [OPTIONS]"
-    echo "Build: $VERGEN_BUILD"
-    echo "Purpose: Purpose"
-    echo "Remarks: Remarks"
-    echo "Options:"
-    echo "  -x, --example           # fping ip targets, required, script detects type from input"
-    echo "Examples:"
-    echo "  ./$(basename "$0") -a ip.dat                    # fping imported ips"
-    exit $(error 0)
-fi
 
 main() {
     local ecode=$((0))

@@ -1,11 +1,19 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="0.280.2925.784414"
-VERGEN_BUILT="2022-05-08 00:04:45.7844 UTC"
+VERGEN_BUILD="0.283.1331.418815"
+VERGEN_BUILT="2022-05-08 02:38:11.4188 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
+
+### Set up by hand with the following commands
+# mkdir -p /usr/local/sbin && cd /usr/local/sbin
+# wget https://raw.githubusercontent.com/michaelmannelson/scripts/main/openwrt/kabrap.sh
+# chmod +x update-opkg.sh
+# crontab -e
+# * * * * * /usr/local/sbin/kabrap.sh -a 192.168.1.10-192.168.1.16 -b 4-32 -p 3000-7000 -m 45000-60000 -l /www/kabrap.log
+# ./kabrap.sh
 
 readonly TRUE=$((1))
 readonly FALSE=$((0))
