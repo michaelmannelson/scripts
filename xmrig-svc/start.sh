@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.225.3167.268057"
-VERGEN_BUILT="2022-06-05 03:08:47.2680 UTC"
+VERGEN_BUILD="1.225.3381.655549"
+VERGEN_BUILT="2022-06-05 03:12:21.6555 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
@@ -54,7 +54,7 @@ if [ $(empty "$(diff "$GIT/src/version.h" "$RUN/src/version.h" 2>&1)") = $FALSE 
         $(log "build failed")
     else
         $(log "build success")
-        kill $(pidof xmrig) 2>/dev/null # ps -ef | grep xmrig | grep -v grep | awk '{print $2}' | xargs kill
+        kill $(pidof xmrig) 2>/dev/null
         rm -rf "$RUN"
         mv -f "$GIT" "$RUN"
         ash -c "$RUN/scripts/enable_1gb_pages.sh"
@@ -73,4 +73,3 @@ if [ $(empty "$(pidof xmrig)") = $TRUE ]; then
 fi
 
 exit
-
