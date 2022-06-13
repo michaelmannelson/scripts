@@ -18,3 +18,4 @@ crontab -e
 
 @hourly /root/scripts/xmrig-svc/scripts/start.sh
 
+/etc/init.d/cron restart
