@@ -6,7 +6,7 @@ git clone https://github.com/michaelmannelson/scripts.git
 
 cd scripts
 
-find . -type d -exec chmod +rx {} \;
+find . -name "*.sh" -exec chmod +x {} +
 
 crontab -e
 
