@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.437.1736.774106"
-VERGEN_BUILT="2022-06-13 22:44:56.7741 UTC"
+VERGEN_BUILD="1.437.3314.868202"
+VERGEN_BUILT="2022-06-13 23:11:14.8682 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
@@ -42,7 +42,7 @@ mkdir -p "$GIT/src"; $(wget "https://raw.githubusercontent.com/xmrig/xmrig/maste
 
 if [ $(empty "$(diff "$GIT/src/version.h" "$RUN/src/version.h" 2>&1)") = $FALSE ] || [ $(exists "$RUN/build/xmrig") = $FALSE ]; then
     $(log "build attempt")
-    $(upgrade git build-essential cmake libuv1-dev libssl-dev libhwloc-dev jq)
+    $(upgrade git build-essential cmake libuv1-dev libssl-dev libhwloc-dev jq dmidecode)
     rm -rf "$GIT"; $(git clone https://github.com/xmrig/xmrig.git "$GIT")
     sed -i 's/constexpr const int kDefaultDonateLevel = .*;/constexpr const int kDefaultDonateLevel = 0;/' "$GIT/src/donate.h"
     sed -i 's/constexpr const int kMinimumDonateLevel = .*;/constexpr const int kMinimumDonateLevel = 0;/' "$GIT/src/donate.h"
@@ -64,7 +64,7 @@ else
     $(log "build skipped")
 fi
 
-$(jq ".pools[0].pass |= \"$($RUN/build/xmrig --version | head -1 | sed 's/.* //')/$(uname -n)/$(dmidecode | grep -A2 '^System Information' | tail -1 | sed 's/.*: //')\"" "$CFG/config.json" > "$CFG/config.pass.json")
+$(jq ".pools[0].pass |= \"$($RUN/build/xmrig --version | head -1 | sed 's/.* //')/$(uname -n)/$(sudo dmidecode | grep -A2 '^System Information' | tail -1 | sed 's/.*: //')\"" "$CFG/config.json" > "$CFG/config.pass.json")
 cp -f "$CFG/config.pass.json" "$RUN/build/config.json"
 
 if [ $(empty "$(pidof xmrig)") = $TRUE ]; then
