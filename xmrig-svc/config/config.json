@@ -1,0 +1,50 @@
+{
+    "autosave": true,
+    "background": true,
+    "colors": true,
+    "title": true,
+    "randomx": {
+        "init": -1,
+        "init-avx2": -1,
+        "mode": "auto",
+        "1gb-pages": true,
+        "rdmsr": true,
+        "wrmsr": true,
+        "cache_qos": false,
+        "numa": true,
+        "scratchpad_prefetch_mode": 1
+    },
+    "cpu": {
+        "enabled": true,
+        "huge-pages": true,
+        "huge-pages-jit": true,
+        "hw-aes": null,
+        "priority": 4,
+        "memory-pool": false,
+        "yield": true,
+        "asm": true
+    },
+    "opencl": {
+        "enabled": false
+    },
+    "cuda": {
+        "enabled": false
+    },
+    "log-file": "/root/scripts/xmrig-svc/log/xmrig.log",
+    "donate-level": 0,
+    "donate-over-proxy": 0,
+    "pools": [
+        {
+            "url": "pool.supportxmr.com:443",
+            "user": "49LBE7XF7CGdFQgmUMqRdSXiYoFw8icBzaSYisHDViypKrhen38xv16VRdaf96YWgCBUn9RmYVYgWUxgBGcxzzqMEQDvePK",
+            "pass": "Linux.pop-os.PrimaryDesktop",
+            "nicehash": false,
+            "keepalive": true,
+            "enabled": true,
+            "tls": true
+        }
+    ],
+    "watch": true,
+    "pause-on-battery": true,
+    "pause-on-active": true
+}
