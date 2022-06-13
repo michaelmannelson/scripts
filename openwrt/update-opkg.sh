@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.437.1736.774106"
-VERGEN_BUILT="2022-06-13 22:44:56.7741 UTC"
+VERGEN_BUILD="1.437.3213.869518"
+VERGEN_BUILT="2022-06-13 23:09:33.8695 UTC"
 
 ### Set up by hand with the following commands
 # mkdir -p /usr/local/sbin && cd /usr/local/sbin

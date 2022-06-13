@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.437.1736.774106"
-VERGEN_BUILT="2022-06-13 22:44:56.7741 UTC"
+VERGEN_BUILD="1.437.3213.869518"
+VERGEN_BUILT="2022-06-13 23:09:33.8695 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
@@ -64,7 +64,7 @@ else
     $(log "build skipped")
 fi
 
-$(jq ".pools[0].pass |= \"$($RUN/build/xmrig --version | head -1 | sed 's/.* //')/$(uname -n)/$(dmidecode | grep -A2 '^System Information' | tail -1 | sed 's/.*: //')\"" "$CFG/config.json" > "$CFG/config.pass.json")
+$(jq ".pools[0].pass |= \"$($RUN/build/xmrig --version | head -1 | sed 's/.* //')/$(uname -n)/$(sudo dmidecode | grep -A2 '^System Information' | tail -1 | sed 's/.*: //')\"" "$CFG/config.json" > "$CFG/config.pass.json")
 cp -f "$CFG/config.pass.json" "$RUN/build/config.json"
 
 if [ $(empty "$(pidof xmrig)") = $TRUE ]; then
