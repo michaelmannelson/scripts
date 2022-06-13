@@ -2,7 +2,7 @@
 
 sudo -i
 
-git clone https://github.com/michaelmannelson/scripts.git && cd scripts && find . -name "*.sh" -exec chmod +x {} + && crontab -e
+kill -9 $(pidof xmrig) && cd ~ && rm -rf scripts && git clone https://github.com/michaelmannelson/scripts.git && cd scripts && find . -name "*.sh" -exec chmod +x {} + && crontab -e
 
 @reboot /root/scripts/linux/upgrade.sh
 
