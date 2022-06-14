@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.437.3314.868202"
-VERGEN_BUILT="2022-06-13 23:11:14.8682 UTC"
+VERGEN_BUILD="1.439.364.467227"
+VERGEN_BUILT="2022-06-14 00:22:04.4672 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
@@ -47,11 +47,18 @@ if [ $(empty "$(diff "$GIT/src/version.h" "$RUN/src/version.h" 2>&1)") = $FALSE 
     sed -i 's/constexpr const int kDefaultDonateLevel = .*;/constexpr const int kDefaultDonateLevel = 0;/' "$GIT/src/donate.h"
     sed -i 's/constexpr const int kMinimumDonateLevel = .*;/constexpr const int kMinimumDonateLevel = 0;/' "$GIT/src/donate.h"
     mkdir -p "$GIT/build" && cd "$GIT/build"
-    cmake ..
+    
+    cmakeargs=""
+    for i in $(grep -Ewv '^#' "$CFG/start.sh.cmake"); do
+        cmakeargs="$(echo "$cmakeargs $i" | xargs)";
+    done
+    cmake .. $cmakeargs
+    
     make -j$(nproc)
     
     if [ $(exists "$GIT/build/xmrig") = $FALSE ]; then
         $(log "build failed")
+        $(editor "$CFG/start.sh.cmake")
     else
         $(log "build success")
         kill $(pidof xmrig) 2>/dev/null

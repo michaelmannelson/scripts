@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.437.3314.868202"
-VERGEN_BUILT="2022-06-13 23:11:14.8682 UTC"
+VERGEN_BUILD="1.439.364.467227"
+VERGEN_BUILT="2022-06-14 00:22:04.4672 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
