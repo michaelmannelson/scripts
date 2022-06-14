@@ -1,8 +1,8 @@
 #!/bin/ash
 VERGEN_BASED="%m.%H.%S.%O"
 VERGEN_BIRTH="2022-04-26 07:16:00.0000 UTC"
-VERGEN_BUILD="1.439.364.467227"
-VERGEN_BUILT="2022-06-14 00:22:04.4672 UTC"
+VERGEN_BUILD="1.439.1238.400205"
+VERGEN_BUILT="2022-06-14 00:36:38.4002 UTC"
 
 # https://github.com/michaelmannelson/scripts
 # No warranty is expressed or implied. Run at your own risk.
@@ -58,7 +58,8 @@ if [ $(empty "$(diff "$GIT/src/version.h" "$RUN/src/version.h" 2>&1)") = $FALSE 
     
     if [ $(exists "$GIT/build/xmrig") = $FALSE ]; then
         $(log "build failed")
-        $(editor "$CFG/start.sh.cmake")
+        $(print "Review build errors then edit cmake args then run start.sh again")
+        $(print "editor \"$CFG/start.sh.cmake\"")
     else
         $(log "build success")
         kill $(pidof xmrig) 2>/dev/null
