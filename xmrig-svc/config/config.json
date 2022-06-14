@@ -12,24 +12,19 @@
     "cuda": false,
     "donate-level": 0,
     "donate-over-proxy": 0,
-    "log-file": "/root/scripts/xmrig-svc/log/xmrig.log",
-    "opencl": false,
     "pause-on-active": true,
     "pause-on-battery": true,    
     "pools": [
         {
             "url": "pool.supportxmr.com:443",
             "user": "49LBE7XF7CGdFQgmUMqRdSXiYoFw8icBzaSYisHDViypKrhen38xv16VRdaf96YWgCBUn9RmYVYgWUxgBGcxzzqMEQDvePK",
-            "pass": "TODO",
+            "pass": "TODO15",
             "keepalive": true,
             "tls": true
         }
     ],
+    "opencl": false,
     "randomx": {
-      "mode": "auto",
       "1gb-pages": true
-    },
-    "title": true,
-    "watch": true
+    }
 }
-
