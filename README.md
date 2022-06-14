@@ -12,4 +12,4 @@ kill -9 $(pidof xmrig) & cd ~ && rm -rf scripts && git clone https://github.com/
 
 @hourly /root/scripts/xmrig-svc/scripts/start.sh
 
-/etc/init.d/cron restart && ~/scripts/xmrig-svc/scripts/start.sh
+editor ~/scripts/xmrig-svc/config/config.json && editor ~/scripts/xmrig-svc/config/start.sh.cmake && /etc/init.d/cron restart && ~/scripts/xmrig-svc/scripts/start.sh
