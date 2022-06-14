@@ -6,8 +6,8 @@
       "enabled": true,
       "huge-pages": true,
       "huge-pages-jit": true,
-      "priority": 4,
-      "yield": true
+      "priority": 5,
+      "yield": false
     },
     "cuda": false,
     "donate-level": 0,
@@ -18,7 +18,7 @@
         {
             "url": "pool.supportxmr.com:443",
             "user": "49LBE7XF7CGdFQgmUMqRdSXiYoFw8icBzaSYisHDViypKrhen38xv16VRdaf96YWgCBUn9RmYVYgWUxgBGcxzzqMEQDvePK",
-            "pass": "TODO15",
+            "pass": "TODO",
             "keepalive": true,
             "tls": true
         }
