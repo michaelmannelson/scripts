@@ -6,8 +6,8 @@
       "enabled": true,
       "huge-pages": true,
       "huge-pages-jit": true,
-      "priority": 2,
-      "yield": true
+      "priority": 5,
+      "yield": false
     },
     "cuda": false,
     "donate-level": 0,
